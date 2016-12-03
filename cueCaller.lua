@@ -13,11 +13,11 @@ function factory ()
 			return
 		end
 		local pos = Session:transport_frame () -- current playhead position
-    
-    if(pos > 100000) then
-      Session:route_by_name("foh_audio"):set_comment ("foo", nil)
-    end
-    --end
+    foh = Session:route_by_name("foh")
+    video = Session:route_by_name("video")
+    if(pos > 100000) then foh:set_comment ("foo", nil) end
+    if(pos > 130000) then video:set_comment ("moe", nil) end
+    if(pos > 150000) then foh:set_comment ("bar", nil) end
   end
 end
 
