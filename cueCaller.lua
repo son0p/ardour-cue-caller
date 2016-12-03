@@ -36,11 +36,7 @@ function factory ()
 		-- This callback happens from within the process callback,
 		-- so we need to queue it ahead of time.
 		if (pos + n_samples + blk >= m and pos + n_samples < m) then
-      -- Session:request_transport_speed (0.0, true)
-      for t in Session:get_tracks():iter() do
-        print (t:name())
-        t:set_comment ("bar", nil)
-      end
+      Session:route_by_name("foh_audio"):set_comment ("fifi", nil)
     end
   end
 end
