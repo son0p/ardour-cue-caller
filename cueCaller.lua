@@ -13,14 +13,24 @@ function factory ()
 			return
 		end
 		local pos = Session:transport_frame () -- current playhead position
+
     -- assuming two tracks called "foh" and "video"
     foh = Session:route_by_name("foh")
     video = Session:route_by_name("video")
-    if(pos > 100000) then foh:set_comment ("foo", nil) end
-    if(pos > 130000) then video:set_comment ("moe", nil) end
-    if(pos > 150000) then foh:set_comment ("bar", nil) end
-    if(pos > 190000) then foh:set_comment ("curly", nil) end
-    if(pos > 220000) then foh:set_comment ("Fade Out", nil) end
+    -- comments on foh track
+    if foh:isnil() then
+      print ("no track named foh found")
+    else
+      if(pos > 240000) then foh:set_comment ("foo", nil) end
+      if(pos > 400000) then foh:set_comment ("bar", nil) end
+    end
+    -- comments of video track
+    if video:isnil() then
+      print ("no track named video found")
+    else
+      if(pos > 300000) then video:set_comment ("curly", nil) end
+      if(pos > 480000) then video:set_comment ("moe", nil) end
+    end
   end
 end
 
