@@ -15,15 +15,9 @@ function factory ()
 		local pos = Session:transport_frame () -- current playhead position
 
     -- assuming some tracks
-    frames = Session:route_by_name("frames") -- to query frames from transport
     foh = Session:route_by_name("foh")
     video = Session:route_by_name("video")
 
-    if frames:isnil() then
-      print ("no track named frames found")
-    else
-      frames:set_comment (pos, nil)
-    end
     -- comments on foh track
     if foh:isnil() then
       print ("no track named foh found")
